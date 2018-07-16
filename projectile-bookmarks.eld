@@ -1,1 +1,1 @@
-("~/Vacasa/vacasa-com-cms-web/")
+("~/.emacs.d/" "~/Vacasa/vacasa-com-cms-web/")
