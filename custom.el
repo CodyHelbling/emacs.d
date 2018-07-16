@@ -6,7 +6,7 @@
  '(custom-enabled-themes (quote (material)))
  '(package-selected-packages
    (quote
-    (neotree magit helm-projectile helm auto-package-update))))
+    (jedi jedi-core jedi-direx neotree magit helm-projectile helm auto-package-update))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

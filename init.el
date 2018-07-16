@@ -85,12 +85,14 @@
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)                 ; optional
+
 ;; init my packages configurations
 (require 'init-helm)
 (require 'init-magit)
 (require 'init-projectile)
 (require 'init-eshell)
-
 
 ;;; .emacs ends here
 
