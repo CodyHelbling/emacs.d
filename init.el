@@ -88,12 +88,39 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)                 ; optional
 
+(setq toggle-truncate-lines t)
+
 ;; init my packages configurations
 (require 'init-helm)
 (require 'init-magit)
 (require 'init-projectile)
 (require 'init-eshell)
 
+
+(global-set-key (kbd "M-s")
+                'find-file-in-repository)
+
+(global-auto-revert-mode t)
+(add-hook 'after-init-hook #'global-emojify-mode)
+
+;;; Remove this if it doesn't work !!!!!!
+(magit-save-repository-buffers nil)
 ;;; .emacs ends here
 
+;; Put backup files neatly away                                                 
+(let ((backup-dir "~/tmp/emacs/backups")
+      (auto-saves-dir "~/tmp/emacs/auto-saves/"))
+  (dolist (dir (list backup-dir auto-saves-dir))
+    (when (not (file-directory-p dir))
+      (make-directory dir t)))
+  (setq backup-directory-alist `(("." . ,backup-dir))
+        auto-save-file-name-transforms `((".*" ,auto-saves-dir t))
+        auto-save-list-file-prefix (concat auto-saves-dir ".saves-")
+        tramp-backup-directory-alist `((".*" . ,backup-dir))
+        tramp-auto-save-directory auto-saves-dir))
 
+(setq backup-by-copying t    ; Don't delink hardlinks                           
+      delete-old-versions t  ; Clean up the backups                             
+      version-control t      ; Use version numbers on backups,                  
+      kept-new-versions 5    ; keep some new versions                           
+      kept-old-versions 2)   ; and some old ones, too   
